@@ -1,0 +1,13 @@
+services:
+    ports:
+      - "443:8443"
+    restart: unless-stopped
+
+  emulator:
+    restart: unless-stopped
+
+  jwt_signer:
+    restart: unless-stopped
+
+  nginx:
+    restart: unless-stopped
