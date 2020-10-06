@@ -1,4 +1,5 @@
 services:
+  front-envoy:
     ports:
       - "443:8443"
     restart: unless-stopped
