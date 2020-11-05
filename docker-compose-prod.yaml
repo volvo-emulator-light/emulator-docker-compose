@@ -1,15 +1,19 @@
 version: "3.7"
 services:
   front-envoy:
+    image: acremuglobal.azurecr.io/emulator_envoy:3.0.1
     ports:
       - "443:8443"
     restart: unless-stopped
 
   emulator:
+    image: acremuglobal.azurecr.io/emulator_emulator:3.0.1
     restart: unless-stopped
 
   jwt_signer:
+    image: acremuglobal.azurecr.io/emulator_jwt_signer:3.0.1
     restart: unless-stopped
 
   nginx:
+    image: acremuglobal.azurecr.io/emulator_nginx:3.0.1
     restart: unless-stopped
