@@ -22,6 +22,10 @@ services:
     shm_size: 128M
     expose:
       - "8554"
+      - "5555"
+      - "5554"
+    secrets:
+      - adbkey
 
   jwt_signer:
     container_name: emulator_jwt_signer
@@ -41,5 +45,20 @@ services:
     expose:
       - "80"
 
+  emulator_controller:
+    container_name: emulator_emulator_controller
+    networks:
+      envoymesh:
+        aliases:
+          - emulator_controller
+    expose:
+      - "80"
+    environment:
+      - PORT=80 # This currently gets overwritten (see explaination in emulator-controller/webpack.config.js)
+
 networks:
   envoymesh: {}
+
+secrets:
+  adbkey:
+    file: ~/.android/adbkey
