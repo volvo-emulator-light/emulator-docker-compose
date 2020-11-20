@@ -24,8 +24,8 @@ services:
       - "8554"
       - "5555"
       - "5554"
-   # secrets:
-   #   - adbkey
+    secrets:
+      - adbkey
 
   jwt_signer:
     container_name: emulator_jwt_signer
@@ -59,6 +59,6 @@ services:
 networks:
   envoymesh: {}
 
-#secrets:
-#  adbkey:
-#    file: ~/.android/adbkey
+secrets:
+  adbkey:
+    file: ~/.android/adbkey
