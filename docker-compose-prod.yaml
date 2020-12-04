@@ -1,23 +1,23 @@
 version: "3.7"
 services:
   front-envoy:
-    image: acremuglobal.azurecr.io/emulator_envoy:polestar-test
+    image: acremuglobal.azurecr.io/emulator_envoy:polestar-test-2
     ports:
       - "443:8443"
     restart: unless-stopped
 
   emulator:
-    image: acremuglobal.azurecr.io/emulator_emulator:polestar-test
+    image: acremuglobal.azurecr.io/emulator_emulator:polestar-test-2
     restart: unless-stopped
 
   jwt_signer:
-    image: acremuglobal.azurecr.io/emulator_jwt_signer:polestar-test
+    image: acremuglobal.azurecr.io/emulator_jwt_signer:polestar-test-2
     restart: unless-stopped
 
   nginx:
-    image: acremuglobal.azurecr.io/emulator_nginx:polestar-test
+    image: acremuglobal.azurecr.io/emulator_nginx:polestar-test-2
     restart: unless-stopped
 
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulator_emulator_controller:polestar-test
+    image: acremuglobal.azurecr.io/emulator_emulator_controller:polestar-test-2
     restart: unless-stopped
