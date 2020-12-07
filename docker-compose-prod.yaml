@@ -1,23 +1,23 @@
 version: "3.7"
 services:
   front-envoy:
-    image: acremuglobal.azurecr.io/emulator_envoy:3.4
+    image: acremuglobal.azurecr.io/emulator_envoy:webrtc-test
     ports:
       - "443:8443"
     restart: unless-stopped
 
   emulator:
-    image: acremuglobal.azurecr.io/emulator_emulator:3.4
+    image: acremuglobal.azurecr.io/emulator_emulator:webrtc-test
     restart: unless-stopped
 
   jwt_signer:
-    image: acremuglobal.azurecr.io/emulator_jwt_signer:3.4
+    image: acremuglobal.azurecr.io/emulator_jwt_signer:webrtc-test
     restart: unless-stopped
 
   nginx:
-    image: acremuglobal.azurecr.io/emulator_nginx:3.4
+    image: acremuglobal.azurecr.io/emulator_nginx:webrtc-test
     restart: unless-stopped
-    
+
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulator_emulator_controller:3.4
+    image: acremuglobal.azurecr.io/emulator_emulator_controller:webrtc-test
     restart: unless-stopped
