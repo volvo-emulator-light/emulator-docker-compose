@@ -18,7 +18,6 @@ services:
       envoymesh:
         aliases:
           - emulator
-    devices: [/dev/kvm]
     shm_size: 128M
     expose:
       - "8554"
@@ -26,6 +25,15 @@ services:
       - "5554"
     secrets:
       - adbkey
+    environment:
+      - DISPLAY
+      - EMULATOR_PARAMS=-gpu host
+      # - LIBGL_DEBUG=verbose
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    devices:
+      - "/dev/kvm"
+    runtime: nvidia
 
   jwt_signer:
     container_name: emulator_jwt_signer
