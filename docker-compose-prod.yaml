@@ -1,23 +1,23 @@
 version: "3.7"
 services:
   front-envoy:
-    image: acremuglobal.azurecr.io/emulator_envoy:gpu-test
+    image: acremuglobal.azurecr.io/emulator_envoy:3.7.1
     ports:
       - "443:8443"
     restart: unless-stopped
 
   emulator:
-    image: acremuglobal.azurecr.io/emulator_emulator:gpu-test
+    image: acremuglobal.azurecr.io/emulator_emulator:3.7.1
     restart: unless-stopped
 
   jwt_signer:
-    image: acremuglobal.azurecr.io/emulator_jwt_signer:gpu-test
+    image: acremuglobal.azurecr.io/emulator_jwt_signer:3.7.1
     restart: unless-stopped
 
   nginx:
-    image: acremuglobal.azurecr.io/emulator_nginx:gpu-test
+    image: acremuglobal.azurecr.io/emulator_nginx:3.7.1
     restart: unless-stopped
 
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulator_emulator_controller:gpu-test
+    image: acremuglobal.azurecr.io/emulator_emulator_controller:3.7.1
     restart: unless-stopped
