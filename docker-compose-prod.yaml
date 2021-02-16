@@ -1,23 +1,23 @@
 version: "3.7"
 services:
   front-envoy:
-    image: acremuglobal.azurecr.io/emulator_envoy:3.7
+    image: acremuglobal.azurecr.io/emulator_envoy:volvo-studio-no-auth
     ports:
       - "443:8443"
     restart: unless-stopped
 
   emulator:
-    image: acremuglobal.azurecr.io/emulator_emulator:3.7
+    image: acremuglobal.azurecr.io/emulator_emulator:volvo-studio-no-auth
     restart: unless-stopped
 
   jwt_signer:
-    image: acremuglobal.azurecr.io/emulator_jwt_signer:3.7
+    image: acremuglobal.azurecr.io/emulator_jwt_signer:volvo-studio-no-auth
     restart: unless-stopped
 
   nginx:
-    image: acremuglobal.azurecr.io/emulator_nginx:3.7
+    image: acremuglobal.azurecr.io/emulator_nginx:volvo-studio-no-auth
     restart: unless-stopped
-    
+
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulator_emulator_controller:3.7
+    image: acremuglobal.azurecr.io/emulator_emulator_controller:volvo-studio-no-auth
     restart: unless-stopped
