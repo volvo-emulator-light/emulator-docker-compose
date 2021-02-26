@@ -1,0 +1,58 @@
+version: "3.7"
+services:
+  jwt_signer:
+    image: acremuglobal.azurecr.io/emulportal_jwt_signer:1.0
+    depends_on:
+      - userdb
+    networks:
+      emulportalnet:
+        aliases:
+          - jwt_signer
+    expose:
+      - "8080"
+    restart: unless-stopped
+    
+  nginx:
+    image: acremuglobal.azurecr.io/emulportal_nginx:1.0
+    depends_on:
+      - jwt_signer
+      - sessionmanager
+    networks:
+      emulportalnet:
+        aliases:
+          - nginx
+    ports:
+      - "443:443"
+    restart: unless-stopped
+    
+  sessionmanager:
+    image: acremuglobal.azurecr.io/emulportal_sessionmanager_server:1.0
+    restart: unless-stopped
+    networks:
+      emulportalnet:
+        aliases:
+          - sessionmanager_server
+    expose:
+      - "4000"
+    restart: unless-stopped
+    
+  userdb:
+    image: acremuglobal.azurecr.io/emulportal_userdb:1.0
+    restart: unless-stopped
+    environment:
+      #POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: smurf90000
+    # Uncomment below and set correct host folder to persist data on portal VM
+    #volumes:
+    #  - <hostdir>:/var/lib/postgresql/data
+    networks:
+      emulportalnet:
+        aliases:
+          - userdb
+    expose:
+      - "5432"
+    restart: unless-stopped
+    
+networks:
+  emulportalnet: {}
+

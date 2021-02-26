@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   front-envoy:
-    container_name: emulator_envoy
+    image: acremuglobal.azurecr.io/emulatorstack_envoy:1.0
     networks:
       - envoymesh
     expose:
@@ -11,42 +11,40 @@ services:
     ports:
       - "80:8080"
       - "8001:8001"
+      - "443:8443"
+    restart: unless-stopped
 
   emulator:
-    container_name: emulator_emulator
+    image: acremuglobal.azurecr.io/emulatorstack_emulator:1.0
     networks:
       envoymesh:
         aliases:
           - emulator
-    devices: [/dev/kvm]
     shm_size: 128M
     expose:
       - "8554"
       - "5555"
       - "5554"
+    devices:
+      - "/dev/kvm"
     secrets:
       - adbkey
-
-  jwt_signer:
-    container_name: emulator_jwt_signer
-    networks:
-      envoymesh:
-        aliases:
-          - jwt_signer
-    expose:
-      - "8080"
+    restart: unless-stopped
+    # logging:
+    #   driver: "none"
 
   nginx:
-    container_name: emulator_nginx
+    image: acremuglobal.azurecr.io/emulatorstack_nginx:1.0
     networks:
       envoymesh:
         aliases:
           - nginx
     expose:
       - "80"
+    restart: unless-stopped
 
   emulator_controller:
-    container_name: emulator_emulator_controller
+    image: acremuglobal.azurecr.io/emulatorstack_emulator:1.0
     networks:
       envoymesh:
         aliases:
@@ -55,6 +53,7 @@ services:
       - "80"
     environment:
       - PORT=80 # This currently gets overwritten (see explaination in emulator-controller/webpack.config.js)
+    restart: unless-stopped
 
 networks:
   envoymesh: {}
