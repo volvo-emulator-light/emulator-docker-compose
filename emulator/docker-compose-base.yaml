@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulatorstack_emulator:1.0
+    image: acremuglobal.azurecr.io/emulatorstack_emulator_controller:1.0
     networks:
       envoymesh:
         aliases:
