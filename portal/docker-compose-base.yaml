@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   jwt_signer:
-    image: acremuglobal.azurecr.io/emulportal_jwt_signer:1.0.2
+    image: acremuglobal.azurecr.io/emulportal_jwt_signer:test-portal-1.0
     depends_on:
       - userdb
     networks:
@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     
   nginx:
-    image: acremuglobal.azurecr.io/emulportal_nginx:1.0.2
+    image: acremuglobal.azurecr.io/emulportal_nginx:test-portal-1.0
     depends_on:
       - jwt_signer
       - sessionmanager
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
     
   sessionmanager:
-    image: acremuglobal.azurecr.io/emulportal_sessionmanager_server:1.0.2
+    image: acremuglobal.azurecr.io/emulportal_sessionmanager_server:test-portal-1.0
     restart: unless-stopped
     networks:
       emulportalnet:
@@ -37,7 +37,7 @@ services:
     restart: unless-stopped
     
   userdb:
-    image: acremuglobal.azurecr.io/emulportal_userdb:1.0.2
+    image: acremuglobal.azurecr.io/emulportal_userdb:test-portal-1.0
     restart: unless-stopped
     environment:
       #POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
