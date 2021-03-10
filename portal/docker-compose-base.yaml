@@ -34,6 +34,8 @@ services:
           - sessionmanager_server
     expose:
       - "4000"
+    environment:
+      - SERVER_CONFIG=test-cloud
     restart: unless-stopped
     
   userdb:
