@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  emulator:
+    environment:
+      - DISPLAY
+      - EMULATOR_PARAMS=-gpu host
+      # - LIBGL_DEBUG=verbose
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    runtime: nvidia
