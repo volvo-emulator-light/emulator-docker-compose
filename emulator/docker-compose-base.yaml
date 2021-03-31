@@ -34,7 +34,7 @@ services:
     #   driver: "none"
 
   nginx:
-    image: acremuglobal.azurecr.io/emulatorstack_nginx:1.0
+    image: acremuglobal.azurecr.io/emulatorstack_nginx:muting-sound
     networks:
       envoymesh:
         aliases:
