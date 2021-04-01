@@ -13,7 +13,7 @@ services:
     restart: unless-stopped
     
   nginx:
-    image: acremuglobal.azurecr.io/emulportal_nginx:1.0.2
+    image: acremuglobal.azurecr.io/emulportal_nginx:sha-d3311a6
     depends_on:
       - jwt_signer
       - sessionmanager

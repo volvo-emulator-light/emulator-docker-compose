@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   front-envoy:
-    image: acremuglobal.azurecr.io/emulatorstack_envoy:1.0
+    image: acremuglobal.azurecr.io/emulatorstack_envoy:2G-emul_v7238267-sha8fb787a
     networks:
       - envoymesh
     expose:
@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
 
   emulator:
-    image: acremuglobal.azurecr.io/emulatorstack_emulator:1.0
+    image: acremuglobal.azurecr.io/emulatorstack_emulator:2G-emul_v7238267-sha8fb787a
     networks:
       envoymesh:
         aliases:
@@ -34,7 +34,7 @@ services:
     #   driver: "none"
 
   nginx:
-    image: acremuglobal.azurecr.io/emulatorstack_nginx:muting-sound
+    image: acremuglobal.azurecr.io/emulatorstack_nginx:2G-emul_v7238267-sha8fb787a
     networks:
       envoymesh:
         aliases:
@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 
   emulator_controller:
-    image: acremuglobal.azurecr.io/emulatorstack_emulator_controller:1.0
+    image: acremuglobal.azurecr.io/emulatorstack_emulator_controller:2G-emul_v7238267-sha8fb787a
     networks:
       envoymesh:
         aliases:
